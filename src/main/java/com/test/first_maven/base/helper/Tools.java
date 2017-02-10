@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 
 public class Tools {
-	private static Logger log = LogManager.getFormatterLogger(Tools.class);
+	private static final Logger log = LogManager.getFormatterLogger(Tools.class);
 
     /**
      * 读取资源文件,并处理中文乱码

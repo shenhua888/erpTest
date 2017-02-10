@@ -15,7 +15,7 @@ import com.test.first_maven.base.UITest;
  *
  */
 public class TestNGListener extends TestListenerAdapter {
-    private Logger log = LogManager.getFormatterLogger(this.getClass());
+    private final Logger log = LogManager.getFormatterLogger(this.getClass());
     private UITest ut;
     private WebDriver driver;
     

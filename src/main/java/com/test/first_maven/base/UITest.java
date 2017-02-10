@@ -18,7 +18,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class UITest {
 	public WebDriver driver;
-	Logger log = LogManager.getFormatterLogger(this.getClass());
+	private final Logger log = LogManager.getFormatterLogger(this.getClass());
 
 	public WebDriver getDriver() {
 		return driver;

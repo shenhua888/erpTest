@@ -17,7 +17,7 @@ import org.openqa.selenium.support.events.WebDriverEventListener;
 
 public class NewWebDriverEventListener implements WebDriverEventListener {
 	
-	private Logger log = LogManager.getFormatterLogger(this.getClass());
+	private final Logger log = LogManager.getFormatterLogger(this.getClass());
 	private By lastFindBy;
 	private String originalValue;
 	

@@ -17,7 +17,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 public class JSONObject2 extends JSONObject {
-	private Logger log = LogManager.getFormatterLogger(this.getClass());
+	private final Logger log = LogManager.getFormatterLogger(this.getClass());
 	@Override
 	public JSONObject accumulate(String key, Object value) throws JSONException {
 		// TODO Auto-generated method stub

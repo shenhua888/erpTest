@@ -15,7 +15,7 @@ import com.mysql.jdbc.Statement;
 
 
 public class MySqlConnect {
-		private Logger log = LogManager.getFormatterLogger(this.getClass());
+		private final Logger log = LogManager.getFormatterLogger(this.getClass());
 	    private Statement statement;
 	    private Connection connection;
 	    private ResultSet result = null;
