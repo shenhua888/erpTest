@@ -32,29 +32,30 @@ public class ImitateUserTest extends UITest {
 		
 		@BeforeTest
 		public void beforeTest() {
-			Tools.killChrome();
+//			Tools.killChrome();
 			Tools.deleteDirectory("pic");
 			System.setProperty("webdriver.chrome.driver", "D:\\jar\\chromedriver.exe");
 			
-			String sql = "SELECT job_number FROM sys_user WHERE userid IN (SELECT ASSIGNEE_ FROM act_ru_task WHERE proc_inst_id_ IN (SELECT actinstid FROM bpm_pro_run_his WHERE STATUS = 1 AND PROCESSNAME IN ('入职确认')))";
-	        MySqlConnect db = new MySqlConnect();
-	        ResultSet result = db.query(sql);
-	        ArrayList<String> list = db.getResultSet(result);
+//			String sql = "SELECT job_number FROM sys_user WHERE userid IN (SELECT ASSIGNEE_ FROM act_ru_task WHERE proc_inst_id_ IN (SELECT actinstid FROM bpm_pro_run_his WHERE STATUS = 1 AND PROCESSNAME IN ('入职确认')))";
+//	        MySqlConnect db = new MySqlConnect();
+//	        ResultSet result = db.query(sql);
+//	        ArrayList<String> list = db.getResultSet(result);
+////	        System.out.println(list.size());
+////	        list.remove("J171927");
+////	        list.remove("00020180");
 //	        System.out.println(list.size());
-//	        list.remove("J171927");
-//	        list.remove("00020180");
-	        System.out.println(list.size());
 	        
-	        jobNumber1 = list.get(list.size()-1);
-	        jobNumber2 = list.get(list.size()-2);
-	        jobNumber3 = list.get(list.size()-3);
-	        jobNumber4 = list.get(list.size()-4);
-	        jobNumber5 = list.get(list.size()-5);
+	        jobNumber1 = "J031511";
+	        jobNumber2 = "Q049912";
+	        jobNumber3 = "J020022";
+	        jobNumber4 = "J161403";
+	        jobNumber5 = "00024805";
+//	        jobNumber5 = list.get(list.size()-5);
 		}
 
 		public void login(String userName) {
 			driver = new EventFiringWebDriver(new ChromeDriver()).register(new NewWebDriverEventListener());
-			String url = "http://172.21.204.23:8080/J2bpm/login.jsp";
+			String url = "http://172.16.55.137/J2bpm/login.jsp";
 			WebAction.get(driver, url, "//*[@name='username']");
 			driver.manage().window().maximize();
 			oaLogin = new OALoginPage(driver);
@@ -64,7 +65,7 @@ public class ImitateUserTest extends UITest {
 		@Test
 		public void pass1() {
 			WebDriver driver = new EventFiringWebDriver(new ChromeDriver()).register(new NewWebDriverEventListener());
-			String url = "http://172.21.204.23:8080/J2bpm/login.jsp";
+			String url = "http://172.16.55.137/J2bpm/login.jsp";
 			WebAction.get(driver, url, "//*[@name='username']");
 			driver.manage().window().maximize();
 			OALoginPage oaLogin = new OALoginPage(driver);
@@ -83,14 +84,14 @@ public class ImitateUserTest extends UITest {
 					+ "\"years\":\"3\"}";
 			myToDo.enterMyToDo();
 //			myToDo.commitAll(flowName);
-			myToDo.commitAll(flowName, paras1);
+//			myToDo.commitAll(flowName, paras1);
 			myToDo.commitAll();
 		}
 
 		@Test
 		public void pass2() {
 			WebDriver driver = new EventFiringWebDriver(new ChromeDriver()).register(new NewWebDriverEventListener());
-			String url = "http://172.21.204.23:8080/J2bpm/login.jsp";
+			String url = "http://172.16.55.137/J2bpm/login.jsp";
 			WebAction.get(driver, url, "//*[@name='username']");
 			driver.manage().window().maximize();
 			OALoginPage oaLogin = new OALoginPage(driver);
@@ -109,13 +110,13 @@ public class ImitateUserTest extends UITest {
 					+ "\"years\":\"3\"}";
 			myToDo.enterMyToDo();
 //			myToDo.commitAll(flowName);
-			myToDo.commitAll(flowName, paras1);
+//			myToDo.commitAll(flowName, paras1);
 			myToDo.commitAll();
 		}
 		@Test
 		public void pass3() {
 			WebDriver driver = new EventFiringWebDriver(new ChromeDriver()).register(new NewWebDriverEventListener());
-			String url = "http://172.21.204.23:8080/J2bpm/login.jsp";
+			String url = "http://172.16.55.137/J2bpm/login.jsp";
 			WebAction.get(driver, url, "//*[@name='username']");
 			driver.manage().window().maximize();
 			OALoginPage oaLogin = new OALoginPage(driver);
@@ -134,13 +135,13 @@ public class ImitateUserTest extends UITest {
 					+ "\"years\":\"3\"}";
 			myToDo.enterMyToDo();
 //			myToDo.commitAll(flowName);
-			myToDo.commitAll(flowName, paras1);
+//			myToDo.commitAll(flowName, paras1);
 			myToDo.commitAll();
 		}
 		@Test
 		public void pass4() {
 			WebDriver driver = new EventFiringWebDriver(new ChromeDriver()).register(new NewWebDriverEventListener());
-			String url = "http://172.21.204.23:8080/J2bpm/login.jsp";
+			String url = "http://172.16.55.137/J2bpm/login.jsp";
 			WebAction.get(driver, url, "//*[@name='username']");
 			driver.manage().window().maximize();
 			OALoginPage oaLogin = new OALoginPage(driver);
@@ -159,13 +160,13 @@ public class ImitateUserTest extends UITest {
 					+ "\"years\":\"3\"}";
 			myToDo.enterMyToDo();
 //			myToDo.commitAll(flowName);
-			myToDo.commitAll(flowName, paras1);
+//			myToDo.commitAll(flowName, paras1);
 			myToDo.commitAll();
 		}
 		@Test
 		public void pass5() {
 			WebDriver driver = new EventFiringWebDriver(new ChromeDriver()).register(new NewWebDriverEventListener());
-			String url = "http://172.21.204.23:8080/J2bpm/login.jsp";
+			String url = "http://172.16.55.137/J2bpm/login.jsp";
 			WebAction.get(driver, url, "//*[@name='username']");
 			driver.manage().window().maximize();
 			OALoginPage oaLogin = new OALoginPage(driver);
@@ -184,8 +185,8 @@ public class ImitateUserTest extends UITest {
 					+ "\"years\":\"3\"}";
 			myToDo.enterMyToDo();
 //			myToDo.commitAll(flowName);
-			myToDo.commitAll(flowName, paras1);
-//			myToDo.commitAll();
+//			myToDo.commitAll(flowName, paras1);
+			myToDo.commitAll();
 		}
 
 }

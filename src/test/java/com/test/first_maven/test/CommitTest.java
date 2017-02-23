@@ -55,33 +55,33 @@ public class CommitTest extends UITest {
 
 	@Test
 	public void pass1() {
-		login("J0000051");
+		login("Q049912");
 		enterMyToDo();
-		String flowName = "员工调动V3";
+		String flowName = "员工离职";
 		myToDo.commitAll(flowName);
 	}
 
 	@Test
 	public void pass2() {
-		login("L0314862");
+		login("00024805");
 		enterMyToDo();
-		String flowName = "员工调动V3";
+		String flowName = "员工离职";
 		myToDo.commitAll(flowName);
 	}
 
 	@Test
 	public void pass3() {
-		login("J4114658");
+		login("J161403");
 		enterMyToDo();
-		String flowName = "员工调动V3";
+		String flowName = "员工离职";
 		myToDo.commitAll(flowName);
 	}
 
 	@Test
 	public void pass4() {
-		login("J0000051");
+		login("J020022");
 		enterMyToDo();
-		String flowName = "员工调动V3";
+		String flowName = "员工离职";
 		myToDo.commitAll(flowName);
 	}
 
