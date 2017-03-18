@@ -10,23 +10,23 @@ import org.testng.Assert;
 
 import com.test.first_maven.base.selenium.WebAction;
 
-public class OALoginPage {
+public class ERPLoginPage {
 	
-	@FindBy(name = "username")
+	@FindBy(id = "Account")
 	@CacheLookup
 	private WebElement userName;
 	
-	@FindBy(name = "password")
+	@FindBy(id = "Password")
 	@CacheLookup
 	private WebElement password;
 	
-	@FindBy(linkText = "登录")
+	@FindBy(xpath = "//*[@id='login']//button")
 	@CacheLookup
 	private WebElement loginBtn;	
 	
 	private WebDriver driver;
 	
-	public OALoginPage (WebDriver driver) {
+	public ERPLoginPage (WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(new AjaxElementLocatorFactory(driver,10), this);
 	}
@@ -37,7 +37,17 @@ public class OALoginPage {
 		this.password.clear();
 		this.password.sendKeys(password);
 		loginBtn.click();
-		Boolean flag = WebAction.waitUntilVisible(driver, "//*[@name='home']", 10);
+		Boolean flag = WebAction.waitUntilVisible(driver, "//*[@id='sidebar-user-name']", 10);
+		Assert.assertTrue(flag);	
+	}
+	
+	public void login (String uName, String password, String errMsg) {
+		userName.clear();
+		userName.sendKeys(uName);
+		this.password.clear();
+		this.password.sendKeys(password);
+		loginBtn.click();
+		Boolean flag = WebAction.isEqualsExpcet(driver, "//*[@id='errorMsg']", errMsg);		
 		Assert.assertTrue(flag);	
 	}
 }
