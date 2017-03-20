@@ -14,24 +14,12 @@ import com.test.first_maven.base.helper.JSONObject2;
 import com.test.first_maven.base.helper.Tools;
 import com.test.first_maven.base.selenium.WebAction;
 
-public class AddJobAssign {
+public class AddHarzardPage {
 	
-	@FindBy(id = "txtsubject")
+	@FindBy(id = "projectID")
 	@CacheLookup
-	private WebElement subjectField;	
-
-	@FindBy(xpath = "//*[@id='assignUsers']/span")
-	@CacheLookup
-	private WebElement assignedBtn;	
+	private WebElement projectBtn;
 	
-	@FindBy(id = "reply_time")
-	@CacheLookup
-	private WebElement replyTimeBtn;	
-
-	@FindBy(xpath = "//th[contains(text(),'指派工作内容')]/following-sibling::*[1]/textarea")
-	@CacheLookup
-	private WebElement jobDescField;	
-
 	@FindBy(xpath = "//span[text()='选择 …']")
 	@CacheLookup
 	private WebElement picBtn;
@@ -50,7 +38,7 @@ public class AddJobAssign {
 	
 	private WebDriver driver;
 	
-	public AddJobAssign (WebDriver driver) {
+	public AddHarzardPage (WebDriver driver) {
 		this.driver = driver;
 		WebAction.enterRecentFrame(driver, "//*[contains(@id,'iframe$undefined')]");
 		PageFactory.initElements(new AjaxElementLocatorFactory(driver,10), this);
@@ -58,19 +46,11 @@ public class AddJobAssign {
 	//新增安全隐患
 	public void add(String paras) {
 		JSONObject json= new JSONObject2(paras);
-		subjectField.sendKeys((String)json.get("subject"));
-		jobDescField.sendKeys((String)json.get("jobDesc"));
-		WebAction.jsSendKeys(driver, replyTimeBtn, (String)json.get("replyTime"));
-		replyTimeBtn.click();
-		Tools.wait(1);
-		WebAction.enterRecentFrame(driver, "//*[contains(@id,'iframe$undefined')]");
-		driver.findElement(By.xpath("//*[@class='xdsoft_calendar']/table/tbody/tr[last()]/td[last()]")).click();
-		Tools.wait(1);
-		WebAction.enterRecentFrame(driver, "//*[contains(@id,'iframe$undefined')]");
-		assignedBtn.click();
+		projectBtn.click();
 		Tools.wait(2);
-		SelectUserPage selUser = new SelectUserPage(driver);
-		selUser.selectUser((String)json.get("userName"));
+		SelectProjectPage selProject = new SelectProjectPage(driver);
+		selProject.selectProject((String)json.get("projectName"));
+		Tools.wait(1);
 		WebAction.enterRecentFrame(driver, "//*[contains(@id,'iframe$undefined')]");
 		if(null != json.get("saveType")) {
 	    	if(json.get("saveType").equals("保存")) {

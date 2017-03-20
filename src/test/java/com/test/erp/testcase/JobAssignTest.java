@@ -49,12 +49,12 @@ public class JobAssignTest extends UITest {
 
 
 	@Test
-	public void loginSuccess() {
+	public void add() {
 		login("shenhua1", "1");
 		enterCatlog();
 		jobAssignPage = new JobAssignPage(driver);
-		String paras = "{\"subject\":\"工作指派的主题\"," 
-				+ "\"jobDesc\":\"具体任务描述\"," 
+		String paras = "{\"subject\":\"工作指派的主题2\"," 
+				+ "\"jobDesc\":\"具体任务描述2\"," 
 				+ "\"userName\":\"嵇雯雯\","
 				+ "\"replyTime\":\"2017-03-30 00:00:00\"}";
 		jobAssignPage.add(paras);

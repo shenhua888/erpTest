@@ -165,6 +165,34 @@ public class WebAction {
 		return true;
 	}
     /**
+     * 获取熟悉值，与预期值一样则返回true，否则返回false
+     * 
+     * @param driver 			浏览器驱动 	
+     * 		  idOrXpath			元素的id或xpath
+     *        attribute 		属性名，如class
+     *        expect			预期属性值
+     *            
+     * @return true:符合预期/false:不符合预期
+     * 
+     * @author shenhua
+     */		
+	public static Boolean waitAttribute (WebDriver driver, String idOrXpath, String attribute, String expect) {
+		if (!idOrXpath.startsWith("/")) {
+			idOrXpath = "//*[@id='" + idOrXpath +"']";
+		}
+		String attValue;
+		for(int i=0;i<10;i++) {
+			Tools.wait(1);
+			attValue = driver.findElement(By.xpath(idOrXpath)).getAttribute(attribute);
+			if(expect.equals(attValue)) {
+				log.info("Attribute："+ attribute + " value = " + attValue + ";expect = " + expect);
+				return true;
+			}
+		}		
+		log.info("Attribute："+ attribute + " value != " + expect);
+		return false;
+	}
+    /**
      * 先回到默认frame,再进入指定frame
      * 
      * @param driver 			浏览器驱动 	

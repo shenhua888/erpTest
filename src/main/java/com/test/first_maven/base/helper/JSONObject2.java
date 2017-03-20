@@ -36,7 +36,7 @@ public class JSONObject2 extends JSONObject {
 		try {
 			return super.get(key);
 		} catch(JSONException e) {
-			log.info("JSONObject2.get error:"+e.getMessage());
+			log.info("JSONObject2.get tip:"+e.getMessage());
 			return null;
 		}
 	}
@@ -80,7 +80,12 @@ public class JSONObject2 extends JSONObject {
 	@Override
 	public JSONArray getJSONArray(String key) throws JSONException {
 		// TODO Auto-generated method stub
-		return super.getJSONArray(key);
+		try {
+			return super.getJSONArray(key);
+		} catch(JSONException e) {
+			log.info("JSONObject2.getJSONArray tip:"+e.getMessage());
+			return null;
+		}
 	}
 
 	@Override

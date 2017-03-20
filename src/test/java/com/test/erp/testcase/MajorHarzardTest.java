@@ -17,13 +17,18 @@ import com.test.first_maven.base.helper.Tools;
 import com.test.first_maven.base.selenium.NewWebDriverEventListener;
 import com.test.first_maven.base.selenium.WebAction;
 import com.test.first_maven.page.ERPLoginPage;
+import com.test.first_maven.page.safeMgr.AddHarzardPage;
+import com.test.first_maven.page.safeMgr.HarzardRegisterPage;
 import com.test.first_maven.page.safeMgr.HiddenDangerMgr;
+import com.test.first_maven.page.safeMgr.JobAssignMgr;
+import com.test.first_maven.page.safeMgr.JobAssignPage;
+import com.test.first_maven.page.safeMgr.MajorHazardMgr;
 import com.test.first_maven.page.safeMgr.RegisterPage;
 
-public class HiddenDangerTest extends UITest {
+public class MajorHarzardTest extends UITest {
 	ERPLoginPage erpLogin;
-	HiddenDangerMgr hiddenDanger;
-	RegisterPage register;
+	MajorHazardMgr majorHazard;
+	HarzardRegisterPage harzardRegister;
 	
 	@BeforeTest
 	public void beforeTest() {
@@ -41,8 +46,8 @@ public class HiddenDangerTest extends UITest {
 	}
 
 	public void enterCatlog() {		
-		hiddenDanger = new HiddenDangerMgr(driver);
-		hiddenDanger.enterRegisterCatlog();
+		majorHazard = new MajorHazardMgr(driver);
+		majorHazard.enterCatlog();
 	}
 
 
@@ -50,17 +55,10 @@ public class HiddenDangerTest extends UITest {
 	public void add() {
 		login("shenhua1", "1");
 		enterCatlog();
-		register = new RegisterPage(driver);
-		String paras = "{\"projectName\":\"无锡戴斯酒店室内装饰工程\"," 
-				+ "\"dangerType\":\"施工机械\"," 
-				+ "\"deadLine\":\"三天\","
-				+ "\"dangerDesc\":\"隐患描述\"," 
-				+ "\"rectifyDesc\":\"整改措施\"," 
-				+ "\"sum\":\"800\"," 
-				+ "\"punishType\":\"现金罚款\","
-				+ "\"pictures\":[\"F:\\\\picture\\\\lufei.jpg\",\"F:\\\\picture\\\\kk.jpg\"],"
-				+ "\"saveType\":\"保存\"}";
-		register.add(paras);
+		harzardRegister = new HarzardRegisterPage(driver);
+		String paras = "{\"projectName\":\"宜兴官林样板房\"," 
+				+ "\"replyTime\":\"2017-03-30 00:00:00\"}";
+		harzardRegister.add(paras);
 	}
 
 

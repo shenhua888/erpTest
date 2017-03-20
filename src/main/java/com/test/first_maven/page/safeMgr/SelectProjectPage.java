@@ -34,7 +34,7 @@ public class SelectProjectPage {
 		WebAction.clickWithExpectSameFrm(driver, advSearchBtn, "//*[@id='topbar-dropmenu']//label[text()='项目名称：']/../div//input");
 		driver.findElement(By.xpath("//*[@id='topbar-dropmenu']//label[text()='项目名称：']/../div//input")).sendKeys(projectName);
 		driver.findElement(By.xpath("//span[text()='查询']")).click();
-		Tools.wait(1);
+		WebAction.waitAttribute(driver, "//*[@id='v-app']/div[2]/div", "style", "display: none;");
 		driver.findElement(By.xpath("//*[@id='v-app']//input[@name='radioButtonItem']/../span")).click();
 		confirmBtn.click();
 	}
