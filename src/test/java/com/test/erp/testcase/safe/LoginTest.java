@@ -1,4 +1,4 @@
-package com.test.erp.testcase;
+package com.test.erp.testcase.safe;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;

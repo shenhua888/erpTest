@@ -1,4 +1,4 @@
-package com.test.erp.testcase;
+package com.test.erp.testcase.safe;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -17,18 +17,13 @@ import com.test.first_maven.base.helper.Tools;
 import com.test.first_maven.base.selenium.NewWebDriverEventListener;
 import com.test.first_maven.base.selenium.WebAction;
 import com.test.first_maven.page.ERPLoginPage;
-import com.test.first_maven.page.safeMgr.AddHarzardPage;
-import com.test.first_maven.page.safeMgr.HarzardRegisterPage;
 import com.test.first_maven.page.safeMgr.HiddenDangerMgr;
-import com.test.first_maven.page.safeMgr.JobAssignMgr;
-import com.test.first_maven.page.safeMgr.JobAssignPage;
-import com.test.first_maven.page.safeMgr.MajorHazardMgr;
 import com.test.first_maven.page.safeMgr.RegisterPage;
 
-public class MajorHarzardTest extends UITest {
+public class HiddenDangerTest extends UITest {
 	ERPLoginPage erpLogin;
-	MajorHazardMgr majorHazard;
-	HarzardRegisterPage harzardRegister;
+	HiddenDangerMgr hiddenDanger;
+	RegisterPage register;
 	
 	@BeforeTest
 	public void beforeTest() {
@@ -46,8 +41,8 @@ public class MajorHarzardTest extends UITest {
 	}
 
 	public void enterCatlog() {		
-		majorHazard = new MajorHazardMgr(driver);
-		majorHazard.enterCatlog();
+		hiddenDanger = new HiddenDangerMgr(driver);
+		hiddenDanger.enterRegisterCatlog();
 	}
 
 
@@ -55,10 +50,17 @@ public class MajorHarzardTest extends UITest {
 	public void add() {
 		login("shenhua1", "1");
 		enterCatlog();
-		harzardRegister = new HarzardRegisterPage(driver);
-		String paras = "{\"projectName\":\"宜兴官林样板房\"," 
-				+ "\"replyTime\":\"2017-03-30 00:00:00\"}";
-		harzardRegister.add(paras);
+		register = new RegisterPage(driver);
+		String paras = "{\"projectName\":\"无锡戴斯酒店室内装饰工程\"," 
+				+ "\"dangerType\":\"施工机械\"," 
+				+ "\"deadLine\":\"三天\","
+				+ "\"dangerDesc\":\"隐患描述\"," 
+				+ "\"rectifyDesc\":\"整改措施\"," 
+				+ "\"sum\":\"800\"," 
+				+ "\"punishType\":\"现金罚款\","
+				+ "\"pictures\":[\"F:\\\\picture\\\\lufei.jpg\",\"F:\\\\picture\\\\kk.jpg\"],"
+				+ "\"saveType\":\"保存\"}";
+		register.add(paras);
 	}
 
 

@@ -1,4 +1,4 @@
-package com.test.erp.testcase;
+package com.test.erp.testcase.safe;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -18,12 +18,14 @@ import com.test.first_maven.base.selenium.NewWebDriverEventListener;
 import com.test.first_maven.base.selenium.WebAction;
 import com.test.first_maven.page.ERPLoginPage;
 import com.test.first_maven.page.safeMgr.HiddenDangerMgr;
+import com.test.first_maven.page.safeMgr.JobAssignMgr;
+import com.test.first_maven.page.safeMgr.JobAssignPage;
 import com.test.first_maven.page.safeMgr.RegisterPage;
 
-public class HiddenDangerTest extends UITest {
+public class JobAssignTest extends UITest {
 	ERPLoginPage erpLogin;
-	HiddenDangerMgr hiddenDanger;
-	RegisterPage register;
+	JobAssignMgr jobAssign;
+	JobAssignPage jobAssignPage;
 	
 	@BeforeTest
 	public void beforeTest() {
@@ -41,8 +43,8 @@ public class HiddenDangerTest extends UITest {
 	}
 
 	public void enterCatlog() {		
-		hiddenDanger = new HiddenDangerMgr(driver);
-		hiddenDanger.enterRegisterCatlog();
+		jobAssign = new JobAssignMgr(driver);
+		jobAssign.enterJobAssignCatlog();
 	}
 
 
@@ -50,17 +52,12 @@ public class HiddenDangerTest extends UITest {
 	public void add() {
 		login("shenhua1", "1");
 		enterCatlog();
-		register = new RegisterPage(driver);
-		String paras = "{\"projectName\":\"无锡戴斯酒店室内装饰工程\"," 
-				+ "\"dangerType\":\"施工机械\"," 
-				+ "\"deadLine\":\"三天\","
-				+ "\"dangerDesc\":\"隐患描述\"," 
-				+ "\"rectifyDesc\":\"整改措施\"," 
-				+ "\"sum\":\"800\"," 
-				+ "\"punishType\":\"现金罚款\","
-				+ "\"pictures\":[\"F:\\\\picture\\\\lufei.jpg\",\"F:\\\\picture\\\\kk.jpg\"],"
-				+ "\"saveType\":\"保存\"}";
-		register.add(paras);
+		jobAssignPage = new JobAssignPage(driver);
+		String paras = "{\"subject\":\"工作指派的主题2\"," 
+				+ "\"jobDesc\":\"具体任务描述2\"," 
+				+ "\"userName\":\"嵇雯雯\","
+				+ "\"replyTime\":\"2017-03-30 00:00:00\"}";
+		jobAssignPage.add(paras);
 	}
 
 
