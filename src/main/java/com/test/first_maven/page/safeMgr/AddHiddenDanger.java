@@ -59,12 +59,15 @@ public class AddHiddenDanger {
 		this.driver = driver;
 		WebAction.enterRecentFrame(driver, "//*[contains(@id,'iframe$undefined')]");
 		PageFactory.initElements(new AjaxElementLocatorFactory(driver,10), this);
+		WebAction.waitUntilExist(driver, "//*[@id='kvFileinputModal']", 10);
 	}
 	//新增安全隐患
 	public void add(String paras) {
 		JSONObject json= new JSONObject2(paras);
-		dangerDesc.sendKeys((String)json.get("dangerDesc"));
-		rectifyDesc.sendKeys((String)json.get("rectifyDesc"));
+//		dangerDesc.sendKeys((String)json.get("dangerDesc"));
+//		rectifyDesc.sendKeys((String)json.get("rectifyDesc"));
+		WebAction.sendKeysWithRetry(dangerDesc, (String)json.get("dangerDesc"));
+		WebAction.sendKeysWithRetry(rectifyDesc, (String)json.get("rectifyDesc"));
 		String dangerType = "1";
 		switch((String) json.get("dangerType")) {
 		case "脚手架":

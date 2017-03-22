@@ -26,7 +26,7 @@ public class LoginTest extends UITest {
 		Tools.deleteDirectory("pic");
 		System.setProperty("webdriver.chrome.driver", "D:\\jar\\chromedriver.exe");
 		driver = new EventFiringWebDriver(new ChromeDriver()).register(new NewWebDriverEventListener());
-		String url = "http://172.16.55.121:8080/Home/LogOn";
+		String url = "http://172.16.0.206:8089/Home/LogOn";
 		WebAction.get(driver, url, "//*[@id='Account']");
 		driver.manage().window().maximize();
 	}

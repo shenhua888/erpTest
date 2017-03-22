@@ -9,11 +9,9 @@
 	<parameter name="browserType" value="chrome" />
 	<test name="test1">
 		<classes>
-			<class name="com.test.erp.testcase.LoginTest">   
+			<class name="com.test.erp.testcase.safe.HiddenDangerTest">   
 				<methods>					
-					<include name="loginFail1" />
-					<include name="loginFail2" />
-					<include name="loginSuccess" />
+					<include name="add" />
 				</methods>
 			</class>
 		</classes>

@@ -35,6 +35,7 @@ public class SelectUserPage {
 		driver.findElement(By.xpath("//*[@id='topbar-dropmenu']//label[text()='员工姓名：']/../div//input")).sendKeys(projectName);
 		driver.findElement(By.xpath("//span[text()='查询']")).click();
 		Tools.wait(1);
+		WebAction.waitAttribute(driver, "//*[@id='v-app']/div[2]/div", "style", "display: none;");
 		driver.findElement(By.xpath("//*[@id='v-app']//input[@name='checkbox']/../span")).click();
 		confirmBtn.click();
 	}

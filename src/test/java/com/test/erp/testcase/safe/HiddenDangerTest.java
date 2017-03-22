@@ -30,7 +30,7 @@ public class HiddenDangerTest extends UITest {
 //		Tools.deleteDirectory("pic");
 		System.setProperty("webdriver.chrome.driver", "D:\\jar\\chromedriver.exe");
 		driver = new EventFiringWebDriver(new ChromeDriver()).register(new NewWebDriverEventListener());
-		String url = "http://172.16.55.121:8080/Home/LogOn";
+		String url = "http://172.16.0.206:8089/Home/LogOn";
 		WebAction.get(driver, url, "//*[@id='Account']");
 		driver.manage().window().maximize();
 	}
@@ -51,7 +51,7 @@ public class HiddenDangerTest extends UITest {
 		login("shenhua1", "1");
 		enterCatlog();
 		register = new RegisterPage(driver);
-		String paras = "{\"projectName\":\"无锡戴斯酒店室内装饰工程\"," 
+		String paras = "{\"projectName\":\"天津浙昆大厦酒店室内精装修工程\"," 
 				+ "\"dangerType\":\"施工机械\"," 
 				+ "\"deadLine\":\"三天\","
 				+ "\"dangerDesc\":\"隐患描述\"," 

@@ -41,7 +41,8 @@ public class AddHarzardPage {
 	public AddHarzardPage (WebDriver driver) {
 		this.driver = driver;
 		WebAction.enterRecentFrame(driver, "//*[contains(@id,'iframe$undefined')]");
-		PageFactory.initElements(new AjaxElementLocatorFactory(driver,10), this);
+		PageFactory.initElements(new AjaxElementLocatorFactory(driver,10), this);	
+		WebAction.waitUntilExist(driver, "//*[@id='kvFileinputModal']", 10);
 	}
 	//新增安全隐患
 	public void add(String paras) {

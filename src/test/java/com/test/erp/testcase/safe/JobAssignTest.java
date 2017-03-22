@@ -32,7 +32,7 @@ public class JobAssignTest extends UITest {
 //		Tools.deleteDirectory("pic");
 		System.setProperty("webdriver.chrome.driver", "D:\\jar\\chromedriver.exe");
 		driver = new EventFiringWebDriver(new ChromeDriver()).register(new NewWebDriverEventListener());
-		String url = "http://172.16.55.121:8080/Home/LogOn";
+		String url = "http://172.16.0.206:8089/Home/LogOn";
 		WebAction.get(driver, url, "//*[@id='Account']");
 		driver.manage().window().maximize();
 	}
@@ -53,10 +53,10 @@ public class JobAssignTest extends UITest {
 		login("shenhua1", "1");
 		enterCatlog();
 		jobAssignPage = new JobAssignPage(driver);
-		String paras = "{\"subject\":\"工作指派的主题2\"," 
-				+ "\"jobDesc\":\"具体任务描述2\"," 
+		String paras = "{\"subject\":\"工作指派的主题3\"," 
+				+ "\"jobDesc\":\"具体任务描述3\"," 
 				+ "\"userName\":\"嵇雯雯\","
-				+ "\"replyTime\":\"2017-03-30 00:00:00\"}";
+				+ "\"replyTime\":\"2017-03-30\"}";
 		jobAssignPage.add(paras);
 	}
 

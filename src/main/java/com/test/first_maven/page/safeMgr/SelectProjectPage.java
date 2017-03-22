@@ -22,15 +22,20 @@ public class SelectProjectPage {
 	@CacheLookup
 	private WebElement confirmBtn;	
 
+	@FindBy(xpath = "//*[@id='v-app']//input[@value='GO!']")
+	@CacheLookup
+	private WebElement goBtn;
+	
 	private WebDriver driver;
 	
 	public SelectProjectPage (WebDriver driver) {
 		this.driver = driver;
 		WebAction.enterRecentFrame(driver, "//*[contains(@id,'iframe$undefined')]");
 		PageFactory.initElements(new AjaxElementLocatorFactory(driver,10), this);
+		WebAction.waitUntilVisible(driver, "//*[@id='v-app']//input[@value='GO!']", 10);
 	}
 	//新增安全隐患
-	public void selectProject(String projectName) {
+	public void selectProject(String projectName) {		
 		WebAction.clickWithExpectSameFrm(driver, advSearchBtn, "//*[@id='topbar-dropmenu']//label[text()='项目名称：']/../div//input");
 		driver.findElement(By.xpath("//*[@id='topbar-dropmenu']//label[text()='项目名称：']/../div//input")).sendKeys(projectName);
 		driver.findElement(By.xpath("//span[text()='查询']")).click();

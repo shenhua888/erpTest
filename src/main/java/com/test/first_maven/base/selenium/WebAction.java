@@ -165,6 +165,31 @@ public class WebAction {
 		return true;
 	}
     /**
+     * 判断元素是否存在(最长等待n秒)
+     * 
+     * @param driver 			浏览器驱动 	
+     *        idOrXpath 		元素的id或xpath
+     *        sencond			最长等待时间，秒
+     *            
+     * @return true:存在/false:不存在
+     * 
+     * @author shenhua
+     */		
+	public static Boolean waitUntilExist (WebDriver driver, String idOrXpath, int sencond) {
+		if (!idOrXpath.startsWith("/")) {
+			idOrXpath = "//*[@id='" + idOrXpath +"']";
+		}
+		Wait<WebDriver> wait =new WebDriverWait(driver, sencond);
+		try {
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(idOrXpath)));
+		} catch(TimeoutException e) {
+			log.info(idOrXpath + ": not exist!");
+			return false;
+		}		
+		log.info(idOrXpath + ": exist!");
+		return true;
+	}
+    /**
      * 获取熟悉值，与预期值一样则返回true，否则返回false
      * 
      * @param driver 			浏览器驱动 	
@@ -371,6 +396,32 @@ public class WebAction {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		log.info("jsSendKeys:" + value);
         js.executeScript("arguments[0].value = \"" + value + "\";", ele);
+	}
+	/**
+     * (带重试的输入)输入后检查是否输入成功，失败重试
+     * 
+     * @param driver 			浏览器驱动 	
+     *        value				输入的值
+     *            
+     * @return 无
+     * 
+     * @author shenhua
+     */
+	public static void sendKeysWithRetry (WebElement ele, String value) {
+		for(int i=0;i<10;i++) {
+			if(i==9) {
+				log.error("sendKeysWithCheck failed!");	
+				break;
+			}
+			ele.clear();
+			ele.sendKeys(value);
+			log.info("getValue =" + ele.getAttribute("value"));
+			if(value.equals(ele.getAttribute("value"))) {
+				log.info("sendKeysWithCheck success!");
+				break;
+			}
+			Tools.wait(1);
+		}
 	}
     /**
      * 先滚动到指定元素，再点击

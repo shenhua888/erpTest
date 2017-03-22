@@ -35,6 +35,7 @@ public class JobAssignPage {
 		this.driver = driver;
 		WebAction.enterRecentFrame(driver, "//*[contains(@id,'iframe_')]");
 		PageFactory.initElements(new AjaxElementLocatorFactory(driver,10), this);
+		WebAction.waitAttribute(driver, "//*[@id='topbar-dropmenu']", "style", "display: none;");
 	}
 	//新增工作指派
 	public void add(String paras) {
