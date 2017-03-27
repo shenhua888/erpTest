@@ -11,16 +11,16 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.test.first_maven.base.UITest;
-import com.test.first_maven.base.helper.MySqlConnect;
-import com.test.first_maven.base.helper.Tools;
-import com.test.first_maven.base.selenium.NewWebDriverEventListener;
-import com.test.first_maven.base.selenium.WebAction;
-import com.test.first_maven.page.ERPLoginPage;
-import com.test.first_maven.page.safeMgr.HiddenDangerMgr;
-import com.test.first_maven.page.safeMgr.JobAssignMgr;
-import com.test.first_maven.page.safeMgr.JobAssignPage;
-import com.test.first_maven.page.safeMgr.RegisterPage;
+import com.test.erp.base.UITest;
+import com.test.erp.base.helper.MySqlConnect;
+import com.test.erp.base.helper.Tools;
+import com.test.erp.base.selenium.NewWebDriverEventListener;
+import com.test.erp.base.selenium.WebAction;
+import com.test.erp.page.ERPLoginPage;
+import com.test.erp.page.safeMgr.HiddenDangerMgr;
+import com.test.erp.page.safeMgr.JobAssignMgr;
+import com.test.erp.page.safeMgr.JobAssignPage;
+import com.test.erp.page.safeMgr.RegisterPage;
 
 public class JobAssignTest extends UITest {
 	ERPLoginPage erpLogin;
@@ -53,9 +53,9 @@ public class JobAssignTest extends UITest {
 		login("shenhua1", "1");
 		enterCatlog();
 		jobAssignPage = new JobAssignPage(driver);
-		String paras = "{\"subject\":\"工作指派的主题3\"," 
-				+ "\"jobDesc\":\"具体任务描述3\"," 
-				+ "\"userName\":\"嵇雯雯\","
+		String paras = "{\"subject\":\"工作指派的主题4\"," 
+				+ "\"jobDesc\":\"具体任务描述4\"," 
+				+ "\"userName\":\"沈华\","
 				+ "\"replyTime\":\"2017-03-30\"}";
 		jobAssignPage.add(paras);
 	}

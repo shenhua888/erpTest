@@ -11,14 +11,14 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.test.first_maven.base.UITest;
-import com.test.first_maven.base.helper.MySqlConnect;
-import com.test.first_maven.base.helper.Tools;
-import com.test.first_maven.base.selenium.NewWebDriverEventListener;
-import com.test.first_maven.base.selenium.WebAction;
-import com.test.first_maven.page.ERPLoginPage;
-import com.test.first_maven.page.safeMgr.HiddenDangerMgr;
-import com.test.first_maven.page.safeMgr.RegisterPage;
+import com.test.erp.base.UITest;
+import com.test.erp.base.helper.MySqlConnect;
+import com.test.erp.base.helper.Tools;
+import com.test.erp.base.selenium.NewWebDriverEventListener;
+import com.test.erp.base.selenium.WebAction;
+import com.test.erp.page.ERPLoginPage;
+import com.test.erp.page.safeMgr.HiddenDangerMgr;
+import com.test.erp.page.safeMgr.RegisterPage;
 
 public class HiddenDangerTest extends UITest {
 	ERPLoginPage erpLogin;
@@ -51,18 +51,17 @@ public class HiddenDangerTest extends UITest {
 		login("shenhua1", "1");
 		enterCatlog();
 		register = new RegisterPage(driver);
-		String paras = "{\"projectName\":\"天津浙昆大厦酒店室内精装修工程\"," 
+		String paras = "{\"projectName\":\"（哈尔滨）玫瑰湾三期D1、D2栋和玫瑰湾二期B43栋功能性装修项目\"," 
 				+ "\"dangerType\":\"施工机械\"," 
 				+ "\"deadLine\":\"三天\","
 				+ "\"dangerDesc\":\"隐患描述\"," 
 				+ "\"rectifyDesc\":\"整改措施\"," 
-				+ "\"sum\":\"800\"," 
+				+ "\"sum\":\"800\","
 				+ "\"punishType\":\"现金罚款\","
-				+ "\"pictures\":[\"F:\\\\picture\\\\lufei.jpg\",\"F:\\\\picture\\\\kk.jpg\"],"
+				+ "\"pictures\":[\"F:\\\\picture\\\\lufei.jpg\",\"F:\\\\picture\\\\kk.jpg\"]," 
 				+ "\"saveType\":\"保存\"}";
 		register.add(paras);
 	}
-
 
 	@AfterTest
 	public void afterTest() {

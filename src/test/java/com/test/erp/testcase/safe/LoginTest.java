@@ -11,12 +11,12 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.test.first_maven.base.UITest;
-import com.test.first_maven.base.helper.MySqlConnect;
-import com.test.first_maven.base.helper.Tools;
-import com.test.first_maven.base.selenium.NewWebDriverEventListener;
-import com.test.first_maven.base.selenium.WebAction;
-import com.test.first_maven.page.ERPLoginPage;
+import com.test.erp.base.UITest;
+import com.test.erp.base.helper.MySqlConnect;
+import com.test.erp.base.helper.Tools;
+import com.test.erp.base.selenium.NewWebDriverEventListener;
+import com.test.erp.base.selenium.WebAction;
+import com.test.erp.page.ERPLoginPage;
 
 public class LoginTest extends UITest {
 	ERPLoginPage erpLogin;
