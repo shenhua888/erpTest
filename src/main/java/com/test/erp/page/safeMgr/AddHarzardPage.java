@@ -1,5 +1,8 @@
 package com.test.erp.page.safeMgr;
 
+import java.util.List;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,7 +23,7 @@ public class AddHarzardPage {
 	@CacheLookup
 	private WebElement projectBtn;
 	
-	@FindBy(xpath = "//span[text()='选择 …']")
+	@FindBy(xpath = "//*[@id='v-app']//span[text()='选择 …']/..")
 	@CacheLookup
 	private WebElement picBtn;
 	
@@ -53,6 +56,19 @@ public class AddHarzardPage {
 		selProject.selectProject((String)json.get("projectName"));
 		Tools.wait(1);
 		WebAction.enterRecentFrame(driver, "//*[contains(@id,'iframe$undefined')]");
+		List<WebElement> eles = driver.findElements(By.xpath("//*[@id='v-app']//*[@name='punishType']"));
+		for(WebElement ele : eles) {
+			ele.click();
+		}
+		if(null != json.getJSONArray("pictures")) {
+			JSONArray jsonA=json.getJSONArray("pictures"); 
+		    for(int i=0;i<jsonA.length();i++){  
+		    	picBtn.click();
+				Tools.wait(1);
+				Tools.selectFile((String)jsonA.get(i));  
+				Tools.wait(1);
+		    }			
+		}
 		if(null != json.get("saveType")) {
 	    	if(json.get("saveType").equals("保存")) {
 	    		saveBtn.click();
