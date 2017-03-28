@@ -524,6 +524,62 @@ public class WebAction {
 		}
 	}
     /**
+     * 点击(有预期),不回到最外层frame
+     * 
+     * @param driver 			浏览器驱动 	
+     * 		  idOrXpath 		元素id或xpath
+     * 		  visibleExpect			预期
+     *            
+     * @return 无
+     * 
+     * @author shenhua
+     */		
+	public static Boolean clickWithRetry (WebDriver driver, WebElement ele, String visibleExpect) {
+		if (!visibleExpect.startsWith("/")) {
+			visibleExpect = "//*[@id='" + visibleExpect +"']";
+		}
+		for(int i=0;i<3;i++) {
+			ele.click();
+			Boolean flag = false;
+			flag = waitUntilVisible(driver, visibleExpect, 3);
+			if (flag.equals(true)) {
+				log.info("click and expect success!");
+				return true;
+			} else {
+				log.info(visibleExpect + " not visible!");
+			}
+		}
+		return false;
+	}
+    /**
+     * 点击(有预期),不回到最外层frame
+     * 
+     * @param driver 			浏览器驱动 	
+     * 		  idOrXpath 		元素id或xpath
+     * 		  visibleExpect			预期
+     *            
+     * @return 无
+     * 
+     * @author shenhua
+     */		
+	public static Boolean clickWithRetry (WebDriver driver, WebElement ele, String visibleExpect, int second) {
+		if (!visibleExpect.startsWith("/")) {
+			visibleExpect = "//*[@id='" + visibleExpect +"']";
+		}
+		for(int i=0;i<3;i++) {
+			ele.click();
+			Boolean flag = false;
+			flag = waitUntilVisible(driver, visibleExpect, second);
+			if (flag.equals(true)) {
+				log.info("click and expect success!");
+				return true;
+			} else {
+				log.info(visibleExpect + " not visible!");
+			}
+		}
+		return false;
+	}	
+    /**
      * 滚动到指定元素
      * 
      * @param driver 			浏览器驱动 	

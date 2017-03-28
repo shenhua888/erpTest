@@ -33,25 +33,22 @@ public class HiddenDangerMgr {
 	}
 	//进入安全隐患登记目录
 	public void enterRegisterCatlog() {
-		registerCatlog.click();
-		Boolean flag = false;
-		flag = WebAction.waitUntilVisible(driver, "//span[text()='安全隐患登记']", 10);
+//		registerCatlog.click();
+		Boolean flag = WebAction.clickWithRetry(driver, registerCatlog, "//span[text()='安全隐患登记']", 10);
 		Assert.assertTrue(flag);
 		Tools.wait(1);
 	}
 	//进入安全隐患处罚目录
 	public void enterPunishCatlog() {
-		punishCatlog.click();
-		Boolean flag = false;
-		flag = WebAction.waitUntilVisible(driver, "//span[text()='安全隐患处罚']", 10);
+//		punishCatlog.click();
+		Boolean flag = WebAction.clickWithRetry(driver, punishCatlog, "//span[text()='安全隐患处罚']", 10);
 		Assert.assertTrue(flag);
 		Tools.wait(1);
 	}
 	//进入安全隐患汇报目录
 	public void enterReportCatlog() {
-		reportCatlog.click();
-		Boolean flag = false;
-		flag = WebAction.waitUntilVisible(driver, "//span[text()='安全隐患汇报']", 10);
+//		reportCatlog.click();
+		Boolean flag = WebAction.clickWithRetry(driver, reportCatlog, "//span[text()='安全隐患汇报']", 10);
 		Assert.assertTrue(flag);
 		Tools.wait(1);
 	}

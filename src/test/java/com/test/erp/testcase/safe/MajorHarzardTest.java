@@ -57,7 +57,7 @@ public class MajorHarzardTest extends UITest {
 		enterCatlog();
 		harzardRegister = new HarzardRegisterPage(driver);
 		String paras = "{\"projectName\":\"宜兴官林样板房\"," 
-				+ "\"pictures\":[\"F:\\\\picture\\\\lufei.jpg\",\"F:\\\\picture\\\\kk.jpg\"]," 
+				//+ "\"pictures\":[\"F:\\\\picture\\\\lufei.jpg\",\"F:\\\\picture\\\\kk.jpg\"]," 
 				+ "\"saveType\":\"保存\"}";
 		harzardRegister.add(paras);
 	}

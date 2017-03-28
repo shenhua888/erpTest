@@ -29,17 +29,15 @@ public class JobAssignMgr {
 	}
 	//进入工作指派目录
 	public void enterJobAssignCatlog() {
-		jobAssignCatlog.click();
-		Boolean flag = false;
-		flag = WebAction.waitUntilVisible(driver, "//*[@id='topbar']//span[text()='工作指派']", 10);
+//		jobAssignCatlog.click();
+		Boolean flag = WebAction.clickWithRetry(driver, jobAssignCatlog, "//*[@id='topbar']//span[text()='工作指派']", 10);
 		Assert.assertTrue(flag);
 		Tools.wait(1);
 	}
 	//进入我的任务目录
 	public void enterMyJobCatlog() {
-		myJobCatlog.click();
-		Boolean flag = false;
-		flag = WebAction.waitUntilVisible(driver, "//span[text()='我的任务']", 10);
+//		myJobCatlog.click();
+		Boolean flag = WebAction.clickWithRetry(driver, myJobCatlog, "//span[text()='我的任务']", 10);
 		Assert.assertTrue(flag);
 		Tools.wait(1);
 	}

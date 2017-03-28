@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Suite1" parallel="methods" thread-count="1">
+<suite name="Suite1" parallel="classes" thread-count="3">
 	<listeners>
-		<listener class-name="com.test.first_maven.base.testng.RetryListener" /> <!-- @test失败重试监听器 -->
-		<listener class-name="com.test.first_maven.base.testng.TestNGITestListener" /> <!-- 用例失败截图监听器 -->
-		<listener class-name="com.test.first_maven.base.testng.TestNGListener" /> <!-- TestNG异常截图监听器 -->
-		<listener class-name="com.test.first_maven.base.testng.TestNGCustomReportListener" /> <!-- 报告监听器 -->
+		<listener class-name="com.test.erp.base.testng.RetryListener" /> <!-- @test失败重试监听器 -->
+		<listener class-name="com.test.erp.base.testng.TestNGITestListener" /> <!-- 用例失败截图监听器 -->
+		<listener class-name="com.test.erp.base.testng.TestNGListener" /> <!-- TestNG异常截图监听器 -->
+		<listener class-name="com.test.erp.base.testng.TestNGCustomReportListener" /> <!-- 报告监听器 -->
 	</listeners>
 	<parameter name="browserType" value="chrome" />
 	<test name="test1">
@@ -14,6 +14,16 @@
 					<include name="add" />
 				</methods>
 			</class>
+			<class name="com.test.erp.testcase.safe.MajorHarzardTest">   
+				<methods>					
+					<include name="add" />
+				</methods>
+			</class>
+			<class name="com.test.erp.testcase.safe.JobAssignTest">   
+				<methods>					
+					<include name="add" />
+				</methods>
+			</class>						
 		</classes>
 	</test>
 </suite>

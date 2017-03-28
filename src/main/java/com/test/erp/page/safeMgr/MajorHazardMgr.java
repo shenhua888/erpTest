@@ -25,9 +25,8 @@ public class MajorHazardMgr {
 	}
 	//进入重大危险源登记目录
 	public void enterCatlog() {
-		majorHazardCatlog.click();
-		Boolean flag = false;
-		flag = WebAction.waitUntilVisible(driver, "//*[@id='topbar']//span[text()='重大危险源登记']", 10);
+//		majorHazardCatlog.click();
+		Boolean flag = WebAction.clickWithRetry(driver, majorHazardCatlog, "//*[@id='topbar']//span[text()='重大危险源登记']", 10);
 		Assert.assertTrue(flag);
 		Tools.wait(1);
 	}

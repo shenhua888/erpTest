@@ -31,7 +31,8 @@ public class SelectUserPage {
 	}
 	//新增安全隐患
 	public void selectUser(String projectName) {
-		WebAction.clickWithExpectSameFrm(driver, advSearchBtn, "//*[@id='topbar-dropmenu']//label[text()='员工姓名：']/../div//input");
+//		WebAction.clickWithExpectSameFrm(driver, advSearchBtn, "//*[@id='topbar-dropmenu']//label[text()='员工姓名：']/../div//input");
+		WebAction.clickWithRetry(driver, advSearchBtn, "//*[@id='topbar-dropmenu']//label[text()='员工姓名：']/../div//input");
 		driver.findElement(By.xpath("//*[@id='topbar-dropmenu']//label[text()='员工姓名：']/../div//input")).sendKeys(projectName);
 		driver.findElement(By.xpath("//span[text()='查询']")).click();
 		Tools.wait(1);
